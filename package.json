@@ -4,13 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --port 80",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@varlet/ui": "^3.10.6",
     "normalize.css": "^8.0.1",
     "pinia": "^3.0.1",
     "vue": "^3.5.13",

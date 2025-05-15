@@ -5,6 +5,7 @@
   --size-sm:380px;
   --size-md:768px;
   --background-gradient: linear-gradient(to right, #ff9966, #66ccff);
+  --button-large:270px
 }
 
 /*--- fonts ---*/
@@ -38,6 +39,13 @@ h1{
   font-style: normal;
 }
 
+.heading{
+  font-size:2.5em;
+  line-height: 1.2em;
+  font-weight: 500;
+  text-align: center;
+}
+
 /*--- Global styles ---*/
 
 #app,
@@ -54,7 +62,7 @@ body {
 main{
   max-width:var(--size-sm);
   height: auto;
-  margin:0 auto;
+  margin:0 15px;
 }
 
 .content{
@@ -82,6 +90,7 @@ button{
   padding:10px 20px;
   box-shadow: none;
   border: none;
+  width:var(--button-large);
 }
 
 .btn.blue{
@@ -104,4 +113,12 @@ button{
 .btn.icon img{
   width: 20px;
   height: 20px;
+}
+
+.simple-icon{
+  max-width: 36px;
+  max-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
