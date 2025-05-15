@@ -46,7 +46,7 @@ const files = ref([
       <var-step>Step4</var-step>
     </var-steps>
     <transition name="slide-fade" mode="out-in">
-      <div :key="step">
+      <div class="form-wrapper" :key="step">
         <template v-if="step === 1">
           <h2 class="heading">Quel est ton numéro de téléphone ? </h2>
           <var-input placeholder="Téléphone" :rules="v => !!v || 'Le téléphone ne peut pas être vide'"
@@ -66,10 +66,11 @@ const files = ref([
               <var-radio :checked-value="1">Male</var-radio>
               <var-radio :checked-value="2">Female</var-radio>
             </var-radio-group>
-            <button class="btn blue simple-icon" @click="nextStep">
-              <img src="../../assets/arrow-right.svg">
-            </button>
+
           </var-space>
+          <button class="btn blue simple-icon" @click="nextStep">
+            <img src="../../assets/arrow-right.svg">
+          </button>
         </template>
         <template v-else-if="step === 3">
           <h2 class="heading">Ajoute une photo de profil pour que les autres voyageurs puissent mieux te connaître !
@@ -111,7 +112,7 @@ const files = ref([
 
 textarea {
   width: 100%;
-  height: 500px;
+  height: 50vh;
   padding: 20px;
   border: none;
   box-sizing: border-box;
@@ -126,11 +127,20 @@ textarea {
 
 .content{
   position: relative;
+  margin-top: 100px;
+}
+
+.form-wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
 }
 
 .btn.simple-icon {
-  position: absolute;
-  bottom:30%;
+  position:absolute;
+  bottom: 0;
+  align-self: center;
 }
 
 </style>
