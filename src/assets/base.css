@@ -2,15 +2,85 @@
 :root {
   --blue:#5EACB2;
   --orange:#ED6A33;
+  --size-sm:380px;
+  --size-md:768px;
+  --background-gradient: linear-gradient(to right, #ff9966, #66ccff);
 }
 
 /*--- fonts ---*/
-@import url("https://use.typekit.net/iqv1axt.css");
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+@font-face {
+  font-family: 'barricada-pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Barricada.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+h1{
+  font-family: "barricada-pro", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*--- Global styles ---*/
+
+#app,
+main{
+  min-height: 100vh;
+}
 
 body {
   margin:0;
   width: 100%;
   min-height: 100vh;
+}
+
+main{
+  max-width:var(--size-sm);
+  height: auto;
+  margin:0 auto;
+}
+
+.content{
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/*--- Alignment ---*/
+
+.flex{
+  display: flex;
+}
+
+.flex.column{
+  flex-direction: column;
+}
+
+/*--- Buttons ---*/
+
+button{
+  appearance: none;
+  border-radius: 20px;
+  background-color: transparent;
+  padding:10px 20px;
+  box-shadow: none;
+  border: none;
+}
+
+.btn.blue{
+  background-color: var(--blue);
+  color: white;
 }

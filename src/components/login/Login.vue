@@ -2,28 +2,19 @@
 
 </script>
 <template>
-  <div class="accueil">
+  <div class="content flex column">
     <div class="logo">
       <img src="../../assets/logo.svg" alt="Logo Terava" />
     </div>
-    <h2 class="slogan">SLOGAN/PROMESSE</h2>
-    <div class="boutons">
-      <button @click="creerCompte">Créer compte</button>
-      <button @click="seConnecter">Se connecter</button>
+    <h1 class="slogan">SLOGAN/PROMESSE</h1>
+    <div class="buttons-wrapper flex column">
+      <button class="btn blue" @click="creerCompte">Créer compte</button>
+      <button class="btn blue" @click="seConnecter">Se connecter</button>
     </div>
   </div>
 </template>
 
 <style scoped>
-.accueil {
-  text-align: center;
-  background: linear-gradient(to right, #ff9966, #66ccff);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 .logo img {
   width: 150px;
@@ -34,9 +25,11 @@
   font-size: 1.5em;
 }
 
-.boutons button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 1em;
+.buttons-wrapper{
+  gap:10px;
+}
+
+button{
+  width:270px
 }
 </style>
