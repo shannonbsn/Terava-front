@@ -145,5 +145,10 @@ button{
 
 .subtitle h2{
   margin: 0;
+  font-size: 18px;
   font-weight: 500;
+}
+
+.subtitle a{
+  font-size: 14px;
 }

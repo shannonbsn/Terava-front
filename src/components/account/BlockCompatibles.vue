@@ -1,0 +1,75 @@
+<script setup>
+import { onMounted } from 'vue'
+import Swiper from 'swiper';
+
+const cardsArray = [
+  { name: 'Layla', image: new URL('../../assets/profil-layla.jpg', import.meta.url).href },
+  { name: 'Jorge', image: new URL('../../assets/profil-jorge.jpg', import.meta.url).href },
+  { name: 'Katerina', image: new URL('../../assets/profil-katerina.jpg', import.meta.url).href },
+  { name: 'Katerina', image: new URL('../../assets/profil-katerina.jpg', import.meta.url).href },
+  { name: 'Katerina', image: new URL('../../assets/profil-katerina.jpg', import.meta.url).href },
+  { name: 'Katerina', image: new URL('../../assets/profil-katerina.jpg', import.meta.url).href },
+]
+
+onMounted(() => {
+  new Swiper('.swiper', {
+    slidesPerView: 3,
+    spaceBetween: 10,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  })
+})
+
+
+</script>
+<template>
+  <div class="cross wrapper">
+    <div class="subtitle flex">
+      <h2>Profils compatibles</h2>
+      <a href="#" class="see-all">Voir plus</a>
+    </div>
+    <div class="swiper cards-list">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div v-for="(card, i) in cardsArray" :key="i" class="swiper-slide card"
+          :style="{ backgroundImage: `url(${card.image})` }">
+          <span class="name">{{ card.name }}</span>
+        </div>
+      </div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.cross {
+  width: 100%;
+}
+
+.swiper {
+  width: 100%;
+  height: 150px;
+}
+
+
+.card {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px 0px #00000040;
+}
+
+.card .name {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  color: white;
+  font-weight: 700;
+}
+</style>
