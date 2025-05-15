@@ -1,23 +1,35 @@
 <script setup>
+import { ref } from 'vue'
+import OAuth from '@/components/login/OAuth.vue'
 
+const showOAuth = ref(false)
 </script>
 <template>
-  <div class="content flex column">
-    <div class="logo">
-      <img src="../../assets/logo.svg" alt="Logo Terava" />
+  <OAuth v-if="showOAuth" />
+  <div v-else class="content flex column">
+    <div class="brand">
+      <div class="logo">
+        <img src="../../assets/logo.svg" alt="Logo Terava" />
+      </div>
+      <h1 class="slogan">SLOGAN/PROMESSE</h1>
     </div>
-    <h1 class="slogan">SLOGAN/PROMESSE</h1>
     <div class="buttons-wrapper flex column">
       <button class="btn blue" @click="creerCompte">Créer compte</button>
-      <button class="btn blue" @click="seConnecter">Se connecter</button>
+      <button @click="showOAuth = true">Se connecter</button>
     </div>
   </div>
 </template>
 
 <style scoped>
 
+.logo {
+  width: 218px;
+  display: flex;
+  justify-content: center;
+}
+
 .logo img {
-  width: 150px;
+  width: 100%;
 }
 
 .slogan {
@@ -30,6 +42,6 @@
 }
 
 button{
-  width:270px
+  width:270px;
 }
 </style>

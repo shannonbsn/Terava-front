@@ -3,5 +3,5 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <router-view :key="$route.fullPath" />
+  <router-view/>
 </template>

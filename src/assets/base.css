@@ -28,6 +28,10 @@ body {
   background-repeat: no-repeat;
 }
 
+a{
+  color:inherit
+}
+
 h1{
   font-family: "barricada-pro", serif;
   font-weight: 400;
@@ -83,4 +87,21 @@ button{
 .btn.blue{
   background-color: var(--blue);
   color: white;
+}
+
+.btn.outline{
+  background-color: transparent;
+  color: var(--orange);
+  border: 2px solid var(--blue);
+}
+
+.btn.icon{
+  display: flex;
+  align-items: center;
+  gap:20px;
+}
+
+.btn.icon img{
+  width: 20px;
+  height: 20px;
 }
