@@ -39,13 +39,15 @@ const cardsArray = [
   <TheHeader />
   <main class="grid">
     <Transition>
-    <SingleTrip v-if="showTrip" @close="showTrip = false" />
+      <SingleTrip v-if="showTrip" @close="showTrip = false" />
     </Transition>
+    <div v-if="showTrip" class="overlay" @click="showTrip = false"></div>
     <CurrentStatus />
     <div class="navigation--block">
       <SearchForm />
     </div>
-    <BlockCompatibles headline="Mes voyages prévus" :larger="true" :cards="cardsArray" @showTripView="displayTripView" />
+    <BlockCompatibles headline="Mes voyages prévus" :larger="true" :cards="cardsArray"
+      @showTripView="displayTripView" />
     <RouterLink to="/match" class="navigation--block meetings">
       <MeetTravellers />
     </RouterLink>
@@ -58,7 +60,6 @@ const cardsArray = [
         <button class="btn blue outline large">Gérer mes voyages</button>
       </RouterLink>
     </div>
-
   </main>
   <TheFooter />
 </template>
@@ -68,6 +69,14 @@ main {
   margin-bottom: 30px;
   gap: 20px;
   position: relative;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.45);
+  z-index: 2000;
+  transition: opacity 0.3s;
 }
 
 a {
@@ -104,13 +113,13 @@ h2 {
   padding: 0;
 }
 
-#oneTrip{
+#oneTrip {
   position: absolute;
   top: 90px;
   left: 0;
   width: 100%;
   z-index: 3000;
-  box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .v-enter-active,
