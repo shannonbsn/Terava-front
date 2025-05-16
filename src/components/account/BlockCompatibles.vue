@@ -63,6 +63,9 @@ onMounted(() => {
 </template>
 
 <style scoped>
+h2{
+  font-weight: 600;
+}
 .cross {
   width: 100%;
   max-width: 100%;

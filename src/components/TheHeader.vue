@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router'
 <template>
   <header>
     <div class="header-wrapper">
-      <router-link to="/" class="logo">
+      <router-link to="/board" class="logo">
         <img src="../assets/logo-mini.svg" alt="Logo Terava" />
       </router-link>
       <div class="account-menu">

@@ -81,7 +81,7 @@ const cardsArray = [
       </var-form>
     </div>
     <BlockCompatibles headline="Mes voyages prévus" :larger="true" :cards="cardsArray" />
-    <RouterLink to="/matching" class="navigation--block meetings">
+    <RouterLink to="/match" class="navigation--block meetings">
       <h2>Rencontrer des voyageurs</h2>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -119,7 +119,7 @@ const cardsArray = [
 
 <style scoped>
 main {
-  grid-template-rows: auto,repeat(4, 1fr);
+  margin-bottom: 30px;
   gap: 20px;
 }
 
@@ -129,6 +129,8 @@ a {
 
 h2{
   margin:0;
+  align-self: flex-start;
+  font-size: 18px;
 }
 
 .info-traveller{
@@ -154,14 +156,13 @@ h2{
 }
 
 .navigation--block {
-  /* border:1px solid var(--blue-light); */
   border-radius: 10px;
   align-self: stretch;
   display: flex;
   gap:15px;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 5px 20px;
+  padding: 5px;
   box-sizing: border-box;
   width: 100%;
 }
