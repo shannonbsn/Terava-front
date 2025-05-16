@@ -4,62 +4,63 @@ import { h, ref } from 'vue'
 import { useRoute } from 'vue-router'
 </script>
 <template>
-
-  <div class="banner" style="background-image: url('../../assets/thumbnail-acores.jpg');">
-    <a class="back" @click="$router.back()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-        class="lucide lucide-arrow-left-icon lucide-arrow-left">
-        <path d="m12 19-7-7 7-7" />
-        <path d="M19 12H5" />
-      </svg>
-    </a>
-    <img src="../../assets/thumbnail-acores.jpg" alt="Photo Arcores" />
-    <h1>Trip Details</h1>
-  </div>
-  <div class="content">
-    <div class="trip-details flex column block">
-      <span class="flex"><img src="../../assets/plane-icon.svg" alt="Photo profil" />Portugal</span>
-      <span class="flex"><img src="../../assets/calendar-icon.svg" alt="Photo profil" />20 mai - 4 juin</span>
-      <div class="participants flex">
-        <div class="thumbnail"><img src="../../assets/profil-bertrand.jpg" alt="Photo profil" /></div>
-        <div class="thumbnail"><img src="../../assets/profil-katerina.jpg" alt="Photo profil" /></div>
-        <div class="thumbnail"><img src="../../assets/profil-joyce.jpg" alt="Photo profil" /></div>
-        <div class="thumbnail"><img src="../../assets/profil-jorge.jpg" alt="Photo profil" /></div>
-        <div class="thumbnail"><img src="../../assets/profil-layla.jpg" alt="Photo profil" /></div>
+  <div id="oneTrip" class="wrapper">
+    <div class="banner" style="background-image: url('../../assets/thumbnail-acores.jpg');">
+      <a class="back" @click="$emit('close')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-arrow-left-icon lucide-arrow-left">
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
+        </svg>
+      </a>
+      <img src="../../assets/thumbnail-acores.jpg" alt="Photo Arcores" />
+      <h1>Trip Details</h1>
+    </div>
+    <div class="content">
+      <div class="trip-details flex column block">
+        <span class="flex"><img src="../../assets/plane-icon.svg" alt="Photo profil" />Portugal</span>
+        <span class="flex"><img src="../../assets/calendar-icon.svg" alt="Photo profil" />20 mai - 4 juin</span>
+        <div class="participants flex">
+          <div class="thumbnail"><img src="../../assets/profil-bertrand.jpg" alt="Photo profil" /></div>
+          <div class="thumbnail"><img src="../../assets/profil-katerina.jpg" alt="Photo profil" /></div>
+          <div class="thumbnail"><img src="../../assets/profil-joyce.jpg" alt="Photo profil" /></div>
+          <div class="thumbnail"><img src="../../assets/profil-jorge.jpg" alt="Photo profil" /></div>
+          <div class="thumbnail"><img src="../../assets/profil-layla.jpg" alt="Photo profil" /></div>
+        </div>
       </div>
-    </div>
-    <button class="btn blue large">Rejoindre le voyage</button>
-    <div class="block">
-      <h2>à propos</h2>
-      <p>À la recherche d’une escapade pour explorer la beauté naturelle des Açores — entre lacs volcaniques, sources
-        chaudes, randonnées côtières et observation des baleines. L’idée est de profiter d’un voyage détendu mais
-        dynamique, avec un équilibre entre aventure et moments de détente.</p>
-    </div>
-    <div class="block">
-      <h2>Interests</h2>
-      <div class="flex interests--list">
-        <span class="btn outline interest icon"><img src="../../assets/detente-icon.png">Détente</span>
-        <span class="btn outline interest icon"><img src="../../assets/nature-icon.png">Culture</span>
-        <span class="btn outline interest icon"><img src="../../assets/urban-icon.png">Vie Urbaine</span>
+      <button class="btn blue large">Rejoindre le voyage</button>
+      <div class="block">
+        <h2>à propos</h2>
+        <p>À la recherche d’une escapade pour explorer la beauté naturelle des Açores — entre lacs volcaniques, sources
+          chaudes, randonnées côtières et observation des baleines. L’idée est de profiter d’un voyage détendu mais
+          dynamique, avec un équilibre entre aventure et moments de détente.</p>
       </div>
-    </div>
-    <div class="block">
-      <h2>Destinations proches</h2>
-      <div class="suggested-trip flex">
-        <div class="thumbnail-trip"><img src="../../assets/thumbnail-poca.jpg" alt="Photo profil" /></div>
-        <div class="thumbnail-trip"><img src="../../assets/thumbnail-caldeira.jpg" alt="Photo profil" /></div>
-        <div class="thumbnail-trip"><img src="../../assets/thumbnail-lagoa.jpg" alt="Photo profil" /></div>
-        <div class="thumbnail-trip"><img src="../../assets/thumbnail-ponta.jpg" alt="Photo profil" /></div>
+      <div class="block">
+        <h2>Interests</h2>
+        <div class="flex interests--list">
+          <span class="btn outline interest icon"><img src="../../assets/detente-icon.png">Détente</span>
+          <span class="btn outline interest icon"><img src="../../assets/nature-icon.png">Culture</span>
+          <span class="btn outline interest icon"><img src="../../assets/urban-icon.png">Vie Urbaine</span>
+        </div>
       </div>
-    </div>
-    <div class="block">
-      <h2>Organisé par</h2>
-      <div class="organisator--wrapper flex">
-        <div class="thumbnail"><img src="../../assets/profil-layla.jpg" alt="Photo profil" /></div>
-        <div class="organisator--info">
-          <h3>Layla</h3>
-          <span>France</span>
+      <div class="block">
+        <h2>Destinations proches</h2>
+        <div class="suggested-trip flex">
+          <div class="thumbnail-trip"><img src="../../assets/thumbnail-poca.jpg" alt="Photo profil" /></div>
+          <div class="thumbnail-trip"><img src="../../assets/thumbnail-caldeira.jpg" alt="Photo profil" /></div>
+          <div class="thumbnail-trip"><img src="../../assets/thumbnail-lagoa.jpg" alt="Photo profil" /></div>
+          <div class="thumbnail-trip"><img src="../../assets/thumbnail-ponta.jpg" alt="Photo profil" /></div>
+        </div>
+      </div>
+      <div class="block">
+        <h2>Organisé par</h2>
+        <div class="organisator--wrapper flex">
+          <div class="thumbnail"><img src="../../assets/profil-layla.jpg" alt="Photo profil" /></div>
+          <div class="organisator--info">
+            <h3>Layla</h3>
+            <span>France</span>
+          </div>
         </div>
       </div>
     </div>
@@ -68,6 +69,9 @@ import { useRoute } from 'vue-router'
 </template>
 
 <style scoped>
+h2{
+  margin-top:20px;
+}
 .back {
   position: absolute;
   width: 40px;
@@ -106,6 +110,7 @@ import { useRoute } from 'vue-router'
 
 .content {
   margin-top: -20px;
+  position: relative;
   z-index: 5;
   background-color: white;
   border-radius: 20px;

@@ -1,7 +1,4 @@
 <script setup>
-import router from '@/router';
-import { h, ref, reactive } from 'vue'
-import { useRoute } from 'vue-router'
 
 </script>
 <template>

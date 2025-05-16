@@ -37,6 +37,8 @@ onMounted(() => {
   })
 })
 
+const emits = defineEmits(['showTripView'])
+
 
 </script>
 <template>
@@ -47,17 +49,12 @@ onMounted(() => {
     </div>
     <div class="swiper">
       <div class="swiper-wrapper">
-        <div
-            v-for="(card, i) in props.cards"
-          :key="i"
-          :class="['swiper-slide', 'card', { larger: props.larger }]"
-          :style="{ backgroundImage: `url(${card.image})` }"
-        >
+        <div v-for="(card, i) in props.cards" :key="i" :class="['swiper-slide', 'card', { larger: props.larger }]"
+          :style="{ backgroundImage: `url(${card.image})` }" @click="$emit('showTripView')">
           <span class="name">{{ card.name }}</span>
         </div>
       </div>
 
-      <!-- <div class="swiper-pagination"></div> -->
     </div>
   </div>
 </template>
