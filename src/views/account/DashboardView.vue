@@ -29,13 +29,14 @@ let imgUrl = new URL('../../assets/thumbnail-poca.jpg', import.meta.url).href
       <div class="col-right">
         <p class="name">Nom du compte</p>
         <p>Nom utilisateur</p>
+        <RouterLink to="profile">Voir le profil</RouterLink>
       </div>
 
     </div>
     <CurrentStatus />
     <div class="content">
       <hr>
-      <h2>Prochain voyage</h2>
+      <h3>Prochain voyage</h3>
       <div class="next-trip card" :style="{ background: 'url(' + imgUrl + ')' }">
         <span class="name">Voyage</span>
       </div>
@@ -73,6 +74,30 @@ let imgUrl = new URL('../../assets/thumbnail-poca.jpg', import.meta.url).href
 
 .content{
   margin-bottom: 30px;
+}
+
+nav{
+  background: var(--blue);
+  padding: 5px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+nav ul{
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+  gap:10px;
+}
+
+nav a{
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 10px;
+  background: var(--grey-light);
+  color:#fff;
 }
 
 h2{
