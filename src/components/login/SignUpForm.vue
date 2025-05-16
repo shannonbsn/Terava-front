@@ -137,6 +137,7 @@ textarea {
   display: flex;
   flex-direction: column;
   flex-grow: 2;
+  gap: 30px;
 }
 
 .simple-icon {
@@ -145,4 +146,7 @@ textarea {
   align-self: center;
 }
 
+.simple-icon img{
+  width: inherit;
+}
 </style>
