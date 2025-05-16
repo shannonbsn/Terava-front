@@ -27,6 +27,12 @@ import { useRoute } from 'vue-router'
 </template>
 
 <style scoped>
+h2 {
+  margin: 0;
+  align-self: flex-start;
+  font-size: 18px;
+}
+
 .users--wrapper .thumbnail {
   width: 50px;
   height: 50px;
