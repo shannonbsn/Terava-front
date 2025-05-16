@@ -28,6 +28,7 @@ footer{
   bottom: 0;
   background:#fff;
   height: 80px;
+  z-index: 1000;
 }
 
 .footer-wrapper {

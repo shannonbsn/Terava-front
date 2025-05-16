@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import OnBoardingView from '@/views/OnBoardingView.vue'
+import TripView from '@/views/TripView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/board',
       name: 'board',
       component: OnBoardingView,
+    },
+    {
+      path: '/trip',
+      name: 'trip',
+      component: TripView,
     },
   ],
 })

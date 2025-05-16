@@ -49,7 +49,7 @@ input[type="text"] {
   padding-left: 46px;
   border: none;
   border-radius: 5px;
-  background-color: var(--grey-medium);
+  background-color: var(--grey-light);
   font-size: 1em;
   line-height: 1.2em;
   font-family: 'Inter UI', sans-serif;
