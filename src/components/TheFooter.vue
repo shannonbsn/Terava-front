@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router'
 <template>
   <footer>
     <div class="footer-wrapper flex">
-      <router-link to="/" class="nav-icon">
+      <router-link to="/board" class="nav-icon">
         <img src="../assets/home-icon.svg" alt="Icone homepage" />
       </router-link>
       <router-link to="/trip" class="nav-icon">

@@ -84,7 +84,7 @@ const files = ref([
           <h2 class="heading">Que recherches-tu sur Terava ?
           </h2>
           <textarea placeholder="Je recherche..." v-model="formData.research" />
-          <router-link to="/board">
+          <router-link to="/board" class="simple-icon">
             <button class="btn blue simple-icon" @click="nextStep">
               <img src="../../assets/arrow-right.svg">
             </button>
@@ -139,7 +139,7 @@ textarea {
   flex-grow: 2;
 }
 
-.btn.simple-icon {
+.simple-icon {
   position:absolute;
   bottom: 0;
   align-self: center;
