@@ -67,6 +67,7 @@ const cardsArray = [
 main {
   margin-bottom: 30px;
   gap: 20px;
+  position: relative;
 }
 
 a {

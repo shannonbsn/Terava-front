@@ -34,8 +34,8 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  max-width: var(--size-md);
-  margin: 0 auto;
+  max-width: var(--size-sm);
+  margin: 0 auto!important;
 }
 
 body.onboarding-view,

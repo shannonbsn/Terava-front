@@ -69,11 +69,17 @@ import { useRoute } from 'vue-router'
 </template>
 
 <style scoped>
+
+.wrapper{
+  max-width: var(--size-sm);
+}
+
 h2{
   margin-top:20px;
 }
 .back {
   position: absolute;
+  transform: rotate(-90deg);
   width: 40px;
   height: 40px;
   top: 10px;
