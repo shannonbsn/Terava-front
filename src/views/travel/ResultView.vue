@@ -25,6 +25,24 @@ let gridItems = [
     image: new URL('../../assets/grid/item-03.jpg', import.meta.url).href,
     height: 200
   },
+  {
+    country: 'Pays',
+    titre: 'Titre',
+    image: new URL('../../assets/grid/item-04.jpg', import.meta.url).href,
+    height: 300
+  },
+  {
+    country: 'Pays',
+    titre: 'Titre',
+    image: new URL('../../assets/grid/item-05.jpg', import.meta.url).href,
+    height: 150
+  },
+  {
+    country: 'Pays',
+    titre: 'Titre',
+    image: new URL('../../assets/grid/item-06.jpg', import.meta.url).href,
+    height: 200
+  },
 ]
 
 onMounted(() => {
@@ -50,16 +68,20 @@ onUnmounted(() => {
 
 })
 
-
-
-
-
 </script>
 
 <template>
   <TheHeader />
   <main>
     <div class="content">
+      <a class="back" @click="$router.back()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-arrow-left-icon lucide-arrow-left">
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
+        </svg>
+      </a>
       <div class="breadcrumb">
         <span>Voyages</span>
       </div>
@@ -81,20 +103,19 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-
-.breadcrumb{
+.breadcrumb {
   height: 50px;
   display: flex;
   justify-content: center;
   font-weight: 600;
 }
 
-.breadcrumb span{
+.breadcrumb span {
   position: relative;
 }
 
-.breadcrumb span::after{
-  content:'';
+.breadcrumb span::after {
+  content: '';
   display: block;
   width: 150%;
   height: 2px;
