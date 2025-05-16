@@ -27,9 +27,10 @@ const props = defineProps({
 
 onMounted(() => {
   new Swiper('.swiper', {
-    slidesPerView: 3,
+    slidesPerView: 'auto',
     spaceBetween: 10,
     setWrapperSize: true,
+
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
@@ -45,10 +46,8 @@ onMounted(() => {
       <h2>{{props.headline}}</h2>
       <a href="#" class="see-all">Voir plus</a>
     </div>
-    <div class="swiper cards-list">
-      <!-- Additional required wrapper -->
+    <div class="swiper">
       <div class="swiper-wrapper">
-        <!-- Slides -->
         <div
           v-for="(card, i) in cardsArray"
           :key="i"
@@ -59,8 +58,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <!-- If we need scrollbar -->
-      <div class="swiper-pagination"></div>
+      <!-- <div class="swiper-pagination"></div> -->
     </div>
   </div>
 </template>
@@ -68,14 +66,19 @@ onMounted(() => {
 <style scoped>
 .cross {
   width: 100%;
+  max-width: 100%;
+    overflow-x: auto;
 }
 
 .swiper {
   width: 100%;
+  max-width: 100%;
   height: 150px;
+  overflow: hidden;
 }
 
 .card {
+  width: 150px;
   position: relative;
   background-position: center;
   background-size: cover;
