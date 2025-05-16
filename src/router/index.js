@@ -4,6 +4,7 @@ import SignUpView from '@/views/SignUpView.vue'
 import OnBoardingView from '@/views/OnBoardingView.vue'
 import TripView from '@/views/TripView.vue'
 import CountryOverview from '@/components/trip/CountryOverview.vue'
+import CreateTravelView from '@/views/CreateTravelView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,12 @@ const router = createRouter({
       path: '/country',
       name: 'country',
       component: CountryOverview,
+    },
+    ,
+    {
+      path: '/travel/create',
+      name: 'create-travel',
+      component: CreateTravelView,
     },
 
   ],

@@ -158,7 +158,6 @@ const activeTab = ref('tab1');
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
 }
 
 .banner h1 {
@@ -236,24 +235,6 @@ button[role="tab"][aria-selected="true"]::after {
   width: 20px;
 }
 
-.participants {
-  gap: 0;
-}
-
-.thumbnail {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: -15px;
-}
-
-.thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .block {
   margin-bottom: 30px;
 }
@@ -263,21 +244,6 @@ button[role="tab"][aria-selected="true"]::after {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 10px;
-}
-
-.interests--list {
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.interest {
-  padding: 5px 20px;
-  white-space: nowrap;
-  font-size: 14px;
-  color: var(--blue);
-  border-radius: 30px;
-  border-width: 3px;
-  gap: 10px;
 }
 
 .suggested-trip {
@@ -299,21 +265,6 @@ button[role="tab"][aria-selected="true"]::after {
   object-fit: cover;
 }
 
-.organisator--wrapper {
-  gap: 30px;
-  align-items: center;
-
-}
-
-.organisator--wrapper .thumbnail {
-  width: 60px;
-  height: 60px;
-}
-
-.organisator--info span {
-  text-transform: uppercase;
-  color: var(--grey-medium);
-}
 .cards--list {
   gap: 10px;
   flex-wrap: wrap;
@@ -369,7 +320,7 @@ button[role="tab"][aria-selected="true"]::after {
   width: 100%;
   height: 100%;
   padding: 10px 10px 15px 0;
-  font-size: 14px;;
+  font-size: 14px;
   line-height: 1.3em;
 }
 

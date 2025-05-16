@@ -32,10 +32,13 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  max-width: var(--size-md);
+  margin: 0 auto;
 }
 
 body.onboarding-view,
-body.trip-view{
+body.trip-view,
+body.create-travel-view{
   background:var(--background-gray);
 }
 
