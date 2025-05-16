@@ -152,6 +152,12 @@ button{
   justify-content: center;
 }
 
+/*-- Home / Signup / Login --*/
+.signin-view .content{
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 150px);
+}
 
 /*--- Boarding ---*/
 

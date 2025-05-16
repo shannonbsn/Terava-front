@@ -9,7 +9,7 @@ import { useRoute } from 'vue-router'
       <router-link to="/" class="nav-icon">
         <img src="../assets/home-icon.svg" alt="Icone homepage" />
       </router-link>
-      <router-link to="/" class="nav-icon">
+      <router-link to="/trip" class="nav-icon">
         <img src="../assets/travel-icon.svg" alt="Icone homepage" />
       </router-link>
       <router-link to="/" class="nav-icon">
