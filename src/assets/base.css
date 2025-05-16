@@ -1,6 +1,8 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --blue:#5EACB2;
+  --blue-light:#a5cccf;
+  --blue-lighter:#eaf4f5;
   --orange:#ED6A33;
   --size-sm:380px;
   --size-md:768px;
@@ -70,20 +72,19 @@ input,text{
 
 /*--- Global styles ---*/
 
-#app,
-main{
-  min-height: 100vh;
+#app{
+  height: 100vh;
 }
 
 body {
   margin:0;
   width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 main{
   max-width:var(--size-sm);
-  height: auto;
+  min-height: calc(100vh - 240px);
   margin:0 15px;
 }
 
@@ -96,7 +97,7 @@ main{
 .content{
   justify-content: flex-start;
   align-items: center;
-  min-height: calc(100vh - 150px);
+  /* min-height: calc(100vh - 150px); */
 }
 
 /*--- Alignment ---*/
@@ -107,6 +108,10 @@ main{
 
 .flex.column{
   flex-direction: column;
+}
+
+.grid{
+  display: grid;
 }
 
 /*--- Buttons ---*/
@@ -156,6 +161,11 @@ button{
   justify-content: center;
 }
 
+.back{
+  display: flex;
+  gap:5px;
+  align-items: ba;
+}
 /*-- Home / Signup / Login --*/
 .signin-view .content{
   justify-content: center;

@@ -13,9 +13,9 @@ import { useRoute } from 'vue-router'
         <img src="../assets/profil.jpg" alt="Photo profil" />
       </div>
     </div>
-    <div class="search-bar">
+    <!-- <div class="search-bar">
       <input type="text" placeholder="Rechercher" />
-    </div>
+    </div> -->
   </header>
 </template>
 

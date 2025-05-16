@@ -112,6 +112,15 @@ let interests = [
 <template>
   <TheHeader />
   <main class="flex column">
+    <a class="back" @click="$router.back()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-arrow-left-icon lucide-arrow-left">
+        <path d="m12 19-7-7 7-7" />
+        <path d="M19 12H5" />
+      </svg>
+      Retour
+    </a>
     <h1>Créer un voyage</h1>
     <var-uploader class="upload-image" v-model="files" @after-read="handleAfterRead" />
     <var-select placeholder="Sélectionner un pays" v-model="value">
@@ -128,22 +137,16 @@ let interests = [
     </var-radio-group>
     <p>Intérêts</p>
     <div class="interests--list">
-      <button
-        v-for="interest in interests"
-        :key="interest.id"
-        class="btn interest"
-        @click="
+      <button v-for="interest in interests" :key="interest.id" class="btn interest" @click="
           value12.includes(interest)
         ? value12.splice(value12.indexOf(interest), 1)
         : value12.push(interest)
-        "
-        :class="value12.includes(interest) ? 'active' : ''"
-      >
+        " :class="value12.includes(interest) ? 'active' : ''">
         <img :src="'../assets/' + interest.icon + '-icon.png'" />
         {{ interest.name }}
       </button>
     </div>
-    <button class="btn blue large" @click="$router.push('/home')">Créer voyage</button>
+    <button class="btn blue large" @click="$router.push('/trip')">Créer voyage</button>
   </main>
   <TheFooter />
 </template>
