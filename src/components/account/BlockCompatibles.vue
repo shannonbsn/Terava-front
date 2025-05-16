@@ -11,10 +11,25 @@ const cardsArray = [
   { name: 'Katerina', image: new URL('../../assets/profil-katerina.jpg', import.meta.url).href },
 ]
 
+const props = defineProps({
+  headline: {
+    type: String
+  },
+  larger:{
+    type: Boolean,
+    default: false
+  },
+  seeAllLink: {
+    type: String,
+    default: '#'
+  }
+})
+
 onMounted(() => {
   new Swiper('.swiper', {
     slidesPerView: 3,
     spaceBetween: 10,
+    setWrapperSize: true,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
@@ -27,15 +42,19 @@ onMounted(() => {
 <template>
   <div class="cross wrapper">
     <div class="subtitle flex">
-      <h2>Profils compatibles</h2>
+      <h2>{{props.headline}}</h2>
       <a href="#" class="see-all">Voir plus</a>
     </div>
     <div class="swiper cards-list">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
-        <div v-for="(card, i) in cardsArray" :key="i" class="swiper-slide card"
-          :style="{ backgroundImage: `url(${card.image})` }">
+        <div
+          v-for="(card, i) in cardsArray"
+          :key="i"
+          :class="['swiper-slide', 'card', { larger: props.larger }]"
+          :style="{ backgroundImage: `url(${card.image})` }"
+        >
           <span class="name">{{ card.name }}</span>
         </div>
       </div>
@@ -56,13 +75,16 @@ onMounted(() => {
   height: 150px;
 }
 
-
 .card {
   position: relative;
   background-position: center;
   background-size: cover;
   border-radius: 10px;
   box-shadow: 0px 4px 10px 0px #00000040;
+}
+
+.card.larger {
+  width: 200px!important;
 }
 
 .card .name {
@@ -72,4 +94,5 @@ onMounted(() => {
   color: white;
   font-weight: 700;
 }
+
 </style>

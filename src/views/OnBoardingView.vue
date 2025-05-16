@@ -18,9 +18,9 @@ onUnmounted(() => {
 <template>
   <TheHeader />
   <main class="flex column">
-    <BlockCompatibles />
-    <BlockCompatibles />
-    <BlockCompatibles />
+    <BlockCompatibles headline="Profils compatibles" />
+    <BlockCompatibles headline="Voyages compatibles" :larger="true" />
+    <BlockCompatibles headline="Voyages populaires" :larger="true" />
     <button class="btn blue" @click="$router.push('/home')">Créer voyage</button>
   </main>
   <TheFooter />
