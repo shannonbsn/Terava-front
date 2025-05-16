@@ -124,6 +124,8 @@ button{
   box-shadow: none;
   border: none;
   width:var(--button-large);
+  filter: brightness(1);
+  transition: 0.2s ease-in-out all;
 }
 
 .btn.large{
@@ -133,6 +135,11 @@ button{
 
 .btn.blue{
   background-color: var(--blue);
+  color: white;
+}
+
+.btn.orange{
+  background-color: var(--orange);
   color: white;
 }
 
@@ -151,6 +158,10 @@ button{
 .btn.icon img{
   width: 20px;
   height: 20px;
+}
+
+.btn:hover{
+  filter: brightness(0.8);
 }
 
 .simple-icon{

@@ -32,19 +32,29 @@ const form = ref(null)
 const disabled = ref(false)
 const readonly = ref(false)
 
+
+const cardsArray = [
+  { name: 'Grèce', image: new URL('../assets/thumbnail-grece.jpg', import.meta.url).href },
+  { name: 'Brésil', image: new URL('../assets/thumbnail-ponta.jpg', import.meta.url).href },
+  { name: 'Maroc', image: new URL('../assets/thumbnail-maroc.jpg', import.meta.url).href },
+  { name: 'Brésil', image: new URL('../assets/thumbnail-caldeira.jpg', import.meta.url).href }
+]
 </script>
 
 <template>
   <TheHeader />
   <main class="grid">
     <div class="info-traveller flex">
+      <div class="flex column">
       <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           class="lucide lucide-map-pin-icon lucide-map-pin">
           <path
             d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
           <circle cx="12" cy="10" r="3" />
-        </svg> Madagascar</span>
+        </svg> <strong>Madagascar</strong></span>
+        <span class="looking">Des filles seulement</span>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="lucide lucide-pencil-icon lucide-pencil">
@@ -65,9 +75,12 @@ const readonly = ref(false)
           </var-select>
           <var-input placeholder="Chercher une ville" v-model="formData.city" />
         </var-space>
+        <RouterLink to="/trip">
+        <button class="btn orange large">Chercher</button>
+        </RouterLink>
       </var-form>
     </div>
-    <BlockCompatibles headline="Mes voyages prévus" :larger="true" />
+    <BlockCompatibles headline="Mes voyages prévus" :larger="true" :cards="cardsArray" />
     <RouterLink to="/matching" class="navigation--block meetings">
       <h2>Rencontrer des voyageurs</h2>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -132,6 +145,14 @@ h2{
   gap: 10px;
 }
 
+.info-traveller .flex{
+  justify-content: center;
+}
+
+.info-traveller .looking{
+  margin-left: 32px;
+}
+
 .navigation--block {
   /* border:1px solid var(--blue-light); */
   border-radius: 10px;
@@ -168,5 +189,11 @@ h2{
   justify-content: center;
   align-items: center;
   padding: 0;
+}
+
+form button{
+  padding: 15px 20px;
+  border-radius: 25px!important;
+  margin-top: 20px;
 }
 </style>

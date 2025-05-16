@@ -19,9 +19,8 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  seeAllLink: {
-    type: String,
-    default: '#'
+  cards: {
+    type: Array
   }
 })
 
@@ -49,7 +48,7 @@ onMounted(() => {
     <div class="swiper">
       <div class="swiper-wrapper">
         <div
-          v-for="(card, i) in cardsArray"
+            v-for="(card, i) in props.cards"
           :key="i"
           :class="['swiper-slide', 'card', { larger: props.larger }]"
           :style="{ backgroundImage: `url(${card.image})` }"
