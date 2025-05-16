@@ -1,10 +1,18 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --blue:#5EACB2;
+  --blue-light:#a5cccf;
+  --blue-lighter:#eaf4f5;
   --orange:#ED6A33;
   --size-sm:380px;
   --size-md:768px;
   --background-gradient: linear-gradient(to right, #ff9966, #66ccff);
+  --background-gray:#F3F0F0;
+  --grey-lighter:#F5F5F5;
+  --grey-light:#D9D9D966;
+  --grey-medium:#a1a1a166;
+  --grey-dark:#787878;
+  --button-large:270px
 }
 
 /*--- fonts ---*/
@@ -26,6 +34,15 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  max-width: var(--size-sm);
+  margin: 0 auto!important;
+}
+
+body.onboarding-view,
+body.trip-view,
+body.create-travel-view,
+body.result-view{
+  background:var(--background-gray);
 }
 
 a{
@@ -38,29 +55,55 @@ h1{
   font-style: normal;
 }
 
+h2{
+  margin: 0;
+
+}
+
+h3{
+  margin:5px 0;
+}
+
+.heading{
+  font-size:2.5em;
+  line-height: 1.2em;
+  font-weight: 500;
+  text-align: center;
+}
+
+/*--- Forms ---*/
+input,text{
+  box-sizing: border-box;
+}
+
 /*--- Global styles ---*/
 
-#app,
-main{
-  min-height: 100vh;
+#app{
+  height: 100vh;
 }
 
 body {
   margin:0;
   width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 main{
   max-width:var(--size-sm);
-  height: auto;
+  min-height: calc(100vh - 240px);
+  margin:0 15px;
+}
+
+.trip-view main{
   margin:0 auto;
+  max-width: inherit;
+  width: 100%;
 }
 
 .content{
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 180px);
 }
 
 /*--- Alignment ---*/
@@ -73,6 +116,10 @@ main{
   flex-direction: column;
 }
 
+.grid{
+  display: grid;
+}
+
 /*--- Buttons ---*/
 
 button{
@@ -82,6 +129,14 @@ button{
   padding:10px 20px;
   box-shadow: none;
   border: none;
+  width:var(--button-large);
+  filter: brightness(1);
+  transition: 0.2s ease-in-out all;
+}
+
+.btn.large{
+  width:100%;
+  border-radius: 10px;;
 }
 
 .btn.blue{
@@ -89,9 +144,14 @@ button{
   color: white;
 }
 
+.btn.orange{
+  background-color: var(--orange);
+  color: white;
+}
+
 .btn.outline{
   background-color: transparent;
-  color: var(--orange);
+  color: var(--blue);
   border: 2px solid var(--blue);
 }
 
@@ -104,4 +164,46 @@ button{
 .btn.icon img{
   width: 20px;
   height: 20px;
+}
+
+.btn:hover{
+  filter: brightness(0.8);
+}
+
+.simple-icon{
+  max-width: 36px;
+  max-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back{
+  display: flex;
+  gap:5px;
+  align-items: ba;
+}
+/*-- Home / Signup / Login --*/
+.signin-view .content{
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 150px);
+}
+
+/*--- Boarding ---*/
+
+.subtitle{
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;;
+}
+
+.subtitle h2{
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.subtitle a{
+  font-size: 14px;
 }

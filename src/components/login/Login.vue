@@ -14,7 +14,9 @@ const showOAuth = ref(false)
       <h1 class="slogan">SLOGAN/PROMESSE</h1>
     </div>
     <div class="buttons-wrapper flex column">
-      <button class="btn blue" @click="creerCompte">Créer compte</button>
+      <router-link to="/signup">
+        <button class="btn blue">Créer un compte</button>
+      </router-link>
       <button @click="showOAuth = true">Se connecter</button>
     </div>
   </div>
