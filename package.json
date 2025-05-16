@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@varlet/ui": "^3.10.6",
+    "magic-grid": "^3.4.7",
     "normalize.css": "^8.0.1",
     "pinia": "^3.0.1",
     "swiper": "^11.2.6",

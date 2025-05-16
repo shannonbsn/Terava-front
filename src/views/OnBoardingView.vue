@@ -75,8 +75,8 @@ const cardsArray = [
           </var-select>
           <var-input placeholder="Chercher une ville" v-model="formData.city" />
         </var-space>
-        <RouterLink to="/trip">
-        <button class="btn orange large">Chercher</button>
+        <RouterLink to="/results">
+          <button class="btn orange large">Chercher</button>
         </RouterLink>
       </var-form>
     </div>
