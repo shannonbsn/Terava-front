@@ -12,9 +12,10 @@
   },
   "dependencies": {
     "@varlet/ui": "^3.10.6",
+    "axios": "^1.9.0",
     "magic-grid": "^3.4.7",
     "normalize.css": "^8.0.1",
-    "pinia": "^3.0.1",
+    "pinia": "^3.0.3",
     "swiper": "^11.2.6",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
