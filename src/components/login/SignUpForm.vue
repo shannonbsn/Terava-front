@@ -1,42 +1,58 @@
 <script setup>
 import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/userStore'
+
+const router = useRouter()
+const userStore = useUserStore()
 
 const step = ref(1)
-
 const active = ref(0)
-
-function next() {
-}
 
 const formData = reactive({
   phone: '',
   firstname: '',
   lastname: '',
-  gender: undefined,
+  gender: null,
   files: [],
   research: ''
 })
-const form = ref(null)
-const disabled = ref(false)
-const readonly = ref(false)
-const infoUser = ref(false)
-
-function nextStep() {
-  active.value = (active.value + 1) % 4
-  step.value++
-}
 
 const files = ref([
   {
     url: 'https://varletjs.org/cat.jpg',
     cover: 'https://varletjs.org/cat.jpg'
-  },
-  {
-    url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
-    cover: 'https://varletjs.org/cover.jpg'
   }
 ])
+
+function nextStep() {
+  if (step.value === 4) {
+    submitForm()
+  } else {
+    active.value = (active.value + 1) % 4
+    step.value++
+  }
+}
+
+async function submitForm() {
+  const userPayload = {
+    username: formData.firstname.toLowerCase() + '.' + formData.lastname.toLowerCase(),
+    email: formData.phone + '@exemple.com',
+    password: 'password-temporaire',
+    accept_policy: true
+  }
+  console.log('Payload envoyé :', userPayload)
+
+  const success = await userStore.register(userPayload)
+
+  if (success) {
+    router.push('/board')
+  } else {
+    alert(userStore.error)
+  }
+}
 </script>
+
 <template>
   <div class="content flex column">
     <var-steps :active="active">
@@ -45,50 +61,46 @@ const files = ref([
       <var-step>Step3</var-step>
       <var-step>Step4</var-step>
     </var-steps>
+
     <transition name="slide-fade" mode="out-in">
       <div class="form-wrapper" :key="step">
         <template v-if="step === 1">
           <h2 class="heading">Quel est ton numéro de téléphone ? </h2>
-          <var-input placeholder="Téléphone" :rules="v => !!v || 'Le téléphone ne peut pas être vide'"
-            v-model="formData.phone" />
+          <var-input placeholder="Téléphone" :rules="v => !!v || 'Le téléphone est requis'" v-model="formData.phone" />
           <button class="btn blue simple-icon" @click="nextStep">
             <img src="../../assets/arrow-right.svg">
           </button>
         </template>
+
         <template v-else-if="step === 2">
           <h2 class="heading">Ton identité</h2>
           <var-space direction="column" :size="[14, 0]">
-            <var-input placeholder="Prénom" :rules="v => !!v || 'Le prénom ne peut pas être vide'"
-              v-model="formData.firstname" />
-            <var-input placeholder="Nom" :rules="v => !!v || 'Le nom ne peut pas être vide'"
-              v-model="formData.lastname" />
-            <var-radio-group :rules="v => !!v || 'The gender cannot be empty'" v-model="formData.gender">
-              <var-radio :checked-value="1">Male</var-radio>
-              <var-radio :checked-value="2">Female</var-radio>
+            <var-input placeholder="Prénom" :rules="v => !!v || 'Le prénom est requis'" v-model="formData.firstname" />
+            <var-input placeholder="Nom" :rules="v => !!v || 'Le nom est requis'" v-model="formData.lastname" />
+            <var-radio-group :rules="v => !!v || 'Le genre est requis'" v-model="formData.gender">
+              <var-radio :checked-value="1">Homme</var-radio>
+              <var-radio :checked-value="2">Femme</var-radio>
             </var-radio-group>
-
           </var-space>
           <button class="btn blue simple-icon" @click="nextStep">
             <img src="../../assets/arrow-right.svg">
           </button>
         </template>
+
         <template v-else-if="step === 3">
-          <h2 class="heading">Ajoute une photo de profil pour que les autres voyageurs puissent mieux te connaître !
-          </h2>
+          <h2 class="heading">Ajoute une photo de profil</h2>
           <var-uploader v-model="files" />
           <button class="btn blue simple-icon" @click="nextStep">
             <img src="../../assets/arrow-right.svg">
           </button>
         </template>
+
         <template v-else-if="step === 4">
-          <h2 class="heading">Que recherches-tu sur Terava ?
-          </h2>
+          <h2 class="heading">Que recherches-tu ?</h2>
           <textarea placeholder="Je recherche..." v-model="formData.research" />
-          <router-link to="/board" class="simple-icon">
-            <button class="btn blue simple-icon" @click="nextStep">
-              <img src="../../assets/arrow-right.svg">
-            </button>
-          </router-link>
+          <button class="btn blue simple-icon" @click="nextStep">
+            <img src="../../assets/arrow-right.svg">
+          </button>
         </template>
       </div>
     </transition>
@@ -96,22 +108,18 @@ const files = ref([
 </template>
 
 <style scoped>
-
 .slide-fade-enter-active,
 .slide-fade-leave-active {
   transition: all 0.4s cubic-bezier(.55, 0, .1, 1);
 }
-
 .slide-fade-enter-from {
   transform: translateX(100%);
   opacity: 0;
 }
-
 .slide-fade-leave-to {
   transform: translateX(-100%);
   opacity: 0;
 }
-
 textarea {
   width: 100%;
   height: 50vh;
@@ -126,23 +134,19 @@ textarea {
   font-family: 'Inter UI', sans-serif;
   color: #5a5a5a;
 }
-
-.content{
+.content {
   position: relative;
   margin-top: 100px;
 }
-
-.form-wrapper{
+.form-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   flex-grow: 2;
 }
-
 .simple-icon {
-  position:absolute;
+  position: absolute;
   bottom: 0;
   align-self: center;
 }
-
 </style>

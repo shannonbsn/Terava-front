@@ -1,20 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { useUserStore } from '@/stores/userStore'
 
-// Variable pour contrôler l'affichage du formulaire
 const showSignUpForm = ref(false)
-
-// Fonction pour afficher le formulaire d'inscription
-function creerCompte() {
-  showSignUpForm.value = true
-}
-
-// Fonction pour revenir à l'écran principal
-function retour() {
-  showSignUpForm.value = false
-}
-
-// Données du formulaire d'inscription
 const formData = ref({
   username: '',
   email: '',
@@ -22,11 +10,17 @@ const formData = ref({
   confirmPassword: '',
   acceptPolicy: false
 })
-
 const errors = ref({})
+const userStore = useUserStore()
 
-// Validation du formulaire
-function validateForm() {
+function creerCompte() {
+  showSignUpForm.value = true
+}
+function retour() {
+  showSignUpForm.value = false
+}
+
+async function validateForm() {
   errors.value = {}
 
   if (!formData.value.username) {
@@ -50,7 +44,28 @@ function validateForm() {
   }
 
   if (Object.keys(errors.value).length === 0) {
-    alert('Compte créé avec succès !')
+    // Appeler l'API via Pinia store
+    const success = await userStore.register({
+      username: formData.value.username,
+      email: formData.value.email,
+      password: formData.value.password,
+      accept_policy: formData.value.acceptPolicy
+    })
+
+    if (success) {
+      alert('Compte créé avec succès !')
+      showSignUpForm.value = false
+      // Optionnel : reset formulaire ici
+      formData.value = {
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        acceptPolicy: false
+      }
+    } else {
+      alert('Erreur lors de la création du compte : ' + userStore.error)
+    }
   }
 }
 </script>

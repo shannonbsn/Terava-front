@@ -7,6 +7,9 @@ import CountryOverview from '@/components/trip/CountryOverview.vue'
 import CreateTravelView from '@/views/CreateTravelView.vue'
 import ResultView from '@/views/travel/ResultView.vue'
 import MatchingView from '@/views/MatchingView.vue'
+import SignUpForm from '@/components/login/SignUpForm.vue'
+// import SignUpView from '@/views/SignUpView.vue'
+import CurrentStatus from '@/components/onboarding/CurrentStatus.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,8 +54,19 @@ const router = createRouter({
       name: 'match',
       component: MatchingView,
     },
-
+    {
+      path: '/signupmail',
+      name: 'signupmail',
+      component: SignUpForm
+    },
+    {
+      path: '/debug-api',
+      name: 'debug-api',
+      component: () => import('@/views/DebugAPI.vue') // ou le bon chemin
+    }
   ],
 })
+
+
 
 export default router
