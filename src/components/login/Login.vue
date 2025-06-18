@@ -11,7 +11,7 @@ const showOAuth = ref(false)
       <div class="logo">
         <img src="../../assets/logo.svg" alt="Logo Terava" />
       </div>
-      <h1 class="slogan">SLOGAN/PROMESSE</h1>
+      <h1 class="slogan">Votre compagnon de voyage fiable !</h1>
     </div>
     <div class="buttons-wrapper flex column">
       <router-link to="/signup">

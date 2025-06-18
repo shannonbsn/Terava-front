@@ -4,11 +4,8 @@ import { useUserStore } from '@/stores/userStore'
 
 const showSignUpForm = ref(false)
 const formData = ref({
-  username: '',
   email: '',
-  password: '',
-  confirmPassword: '',
-  acceptPolicy: false
+  password: ''
 })
 const errors = ref({})
 const userStore = useUserStore()
@@ -22,49 +19,32 @@ function retour() {
 
 async function validateForm() {
   errors.value = {}
-
-  if (!formData.value.username) {
-    errors.value.username = 'Le nom d\'utilisateur est requis'
-  }
   
   if (!formData.value.email || !/\S+@\S+\.\S+/.test(formData.value.email)) {
-    errors.value.email = 'Un email valide est requis'
+    errors.value.email = 'Mot de passe ou email invalide'
   }
 
   if (!formData.value.password || formData.value.password.length < 6) {
-    errors.value.password = 'Le mot de passe doit contenir au moins 6 caractères'
-  }
-
-  if (formData.value.password !== formData.value.confirmPassword) {
-    errors.value.confirmPassword = 'Les mots de passe ne correspondent pas'
-  }
-
-  if (!formData.value.acceptPolicy) {
-    errors.value.acceptPolicy = 'Vous devez accepter la politique de confidentialité'
+    errors.value.password = 'Mot de passe ou email invalide'
   }
 
   if (Object.keys(errors.value).length === 0) {
     // Appeler l'API via Pinia store
     const success = await userStore.register({
-      username: formData.value.username,
       email: formData.value.email,
-      password: formData.value.password,
-      accept_policy: formData.value.acceptPolicy
+      password: formData.value.password
     })
 
     if (success) {
-      alert('Compte créé avec succès !')
+      alert('Connecté avec succès !')
       showSignUpForm.value = false
       // Optionnel : reset formulaire ici
       formData.value = {
-        username: '',
         email: '',
-        password: '',
-        confirmPassword: '',
-        acceptPolicy: false
+        password: ''
       }
     } else {
-      alert('Erreur lors de la création du compte : ' + userStore.error)
+      alert('Erreur lors de la connection : ' + userStore.error)
     }
   }
 }
@@ -78,7 +58,7 @@ async function validateForm() {
         <div class="logo">
           <img src="../../assets/logo.svg" alt="Logo Terava" />
         </div>
-        <h1 class="slogan">SLOGAN/PROMESSE</h1>
+        <h1 class="slogan">Votre compagnon de voyage fiable !</h1>
       </div>
       <div class="buttons-wrapper flex column">
         <button class="btn outline icon" @click="creerCompte">
@@ -97,10 +77,8 @@ async function validateForm() {
 
     <!-- Affichage du formulaire de création de compte -->
     <template v-else>
-      <h2>Créer un compte</h2>
+      <h2>Se connecter</h2>
       <form @submit.prevent="validateForm">
-        <var-input placeholder="Nom d'utilisateur" v-model="formData.username"/>
-        <p v-if="errors.username" class="error">{{ errors.username }}</p>
 
         <var-input type="email" placeholder="Email" v-model="formData.email"/>
         <p v-if="errors.email" class="error">{{ errors.email }}</p>
@@ -108,13 +86,7 @@ async function validateForm() {
         <var-input type="password" placeholder="Mot de passe" v-model="formData.password"/>
         <p v-if="errors.password" class="error">{{ errors.password }}</p>
 
-        <var-input type="password" placeholder="Confirmer le mot de passe" v-model="formData.confirmPassword"/>
-        <p v-if="errors.confirmPassword" class="error">{{ errors.confirmPassword }}</p>
-
-        <var-checkbox v-model="formData.acceptPolicy">J'accepte la politique de confidentialité</var-checkbox>
-        <p v-if="errors.acceptPolicy" class="error">{{ errors.acceptPolicy }}</p>
-
-        <button type="submit" class="btn blue">Créer un compte</button>
+        <button type="submit" class="btn blue">Se connecter</button>
       </form>
       <button class="btn outline" @click="retour">Retour</button>
     </template>

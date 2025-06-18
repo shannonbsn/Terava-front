@@ -32,10 +32,10 @@ const files = ref([
 ])
 
 function nextStep() {
-  if (step.value === 6) {
+  if (step.value === 5) {
     submitForm()
   } else {
-    active.value = (active.value + 1) % 6
+    active.value = (active.value + 1) % 5
     step.value++
   }
 }
@@ -104,14 +104,15 @@ async function submitForm() {
         </template>
 
         <template v-else-if="step === 2">
-          <h2 class="heading">Ton identité</h2>
+          <h2 class="heading">Completez votre profil</h2>
           <var-space direction="column" :size="[14, 0]">
             <var-input placeholder="Prénom" :rules="v => !!v || 'Le prénom est requis'" v-model="formData.firstname" />
             <var-input placeholder="Nom" :rules="v => !!v || 'Le nom est requis'" v-model="formData.lastname" />
+            <var-input type="date" :rules="v => !!v || 'La date de naissance est requise'" v-model="formData.birthdate" />
             <select v-model="formData.gender">
               <option value="homme">Homme</option>
               <option value="femme">Femme</option>
-            </select>>
+            </select>
           </var-space>
           <button class="btn blue simple-icon" @click="nextStep">
             <img src="../../assets/arrow-right.svg" />
@@ -119,17 +120,6 @@ async function submitForm() {
         </template>
 
         <template v-else-if="step === 3">
-          <h2 class="heading">Quelle est ta date de naissance ?</h2>
-          <var-input
-            type="date"
-            :rules="v => !!v || 'La date de naissance est requise'"
-            v-model="formData.birthdate" />
-          <button class="btn blue simple-icon" @click="nextStep">
-            <img src="../../assets/arrow-right.svg" />
-          </button>
-        </template>
-
-        <template v-else-if="step === 4">
           <h2 class="heading">Quel est ton numéro de téléphone ?</h2>
           <var-input placeholder="Téléphone" :rules="v => !!v || 'Le téléphone est requis'" v-model="formData.phone" />
           <button class="btn blue simple-icon" @click="nextStep">
@@ -137,7 +127,7 @@ async function submitForm() {
           </button>
         </template>
 
-        <template v-else-if="step === 5">
+        <template v-else-if="step === 4">
           <h2 class="heading">Ajoute une photo de profil</h2>
           <var-uploader v-model="files" />
           <button class="btn blue simple-icon" @click="nextStep">
@@ -145,7 +135,7 @@ async function submitForm() {
           </button>
         </template>
 
-        <template v-else-if="step === 6">
+        <template v-else-if="step === 5">
           <h2 class="heading">Que recherches-tu ?</h2>
           <textarea placeholder="Je recherche..." v-model="formData.research" />
           <button class="btn blue simple-icon" @click="nextStep">
