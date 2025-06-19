@@ -44,7 +44,7 @@ async function submitForm() {
   const userPayload = {
     username: formData.username,
     email: formData.email,
-    password: 'password-temporaire',
+    password: formData.password,
     accept_policy: formData.accept_policy
   }
 

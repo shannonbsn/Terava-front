@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { useUserStore } from '@/stores/userStore'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const showSignUpForm = ref(false)
 const formData = ref({
@@ -30,19 +33,13 @@ async function validateForm() {
 
   if (Object.keys(errors.value).length === 0) {
     // Appeler l'API via Pinia store
-    const success = await userStore.register({
+    const success = await userStore.login({
       email: formData.value.email,
       password: formData.value.password
     })
 
     if (success) {
-      alert('Connecté avec succès !')
-      showSignUpForm.value = false
-      // Optionnel : reset formulaire ici
-      formData.value = {
-        email: '',
-        password: ''
-      }
+      router.push('/board')
     } else {
       alert('Erreur lors de la connection : ' + userStore.error)
     }
