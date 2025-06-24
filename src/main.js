@@ -3,6 +3,9 @@ import 'swiper/swiper-bundle.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { registerSW } from 'virtual:pwa-register'
+
+registerSW({ immediate: true })
 
 import App from './App.vue'
 import router from './router'
