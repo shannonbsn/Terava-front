@@ -2,27 +2,30 @@
 import { ref } from 'vue'
 import { useUserStore } from '@/stores/userStore'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
 
 const router = useRouter()
-
 const showSignUpForm = ref(false)
+
 const formData = ref({
   email: '',
   password: ''
 })
+
 const errors = ref({})
 const userStore = useUserStore()
 
 function creerCompte() {
   showSignUpForm.value = true
 }
+
 function retour() {
   showSignUpForm.value = false
 }
 
 async function validateForm() {
   errors.value = {}
-  
+
   if (!formData.value.email || !/\S+@\S+\.\S+/.test(formData.value.email)) {
     errors.value.email = 'Mot de passe ou email invalide'
   }
@@ -32,16 +35,26 @@ async function validateForm() {
   }
 
   if (Object.keys(errors.value).length === 0) {
-    // Appeler l'API via Pinia store
-    const success = await userStore.login({
-      email: formData.value.email,
-      password: formData.value.password
-    })
+    try {
+      // ➤ Étape 1 : appel CSRF-cookie Sanctum
+      await axios.get('http://localhost:8000/sanctum/csrf-cookie', {
+        withCredentials: true
+      })
 
-    if (success) {
-      router.push('/board')
-    } else {
-      alert('Erreur lors de la connection : ' + userStore.error)
+      // ➤ Étape 2 : tentative de connexion via Pinia
+      const success = await userStore.login({
+        email: formData.value.email,
+        password: formData.value.password
+      })
+
+      if (success) {
+        router.push('/board')
+      } else {
+        alert('Erreur lors de la connexion : ' + userStore.error)
+      }
+    } catch (err) {
+      console.error('Erreur de connexion', err)
+      alert('Erreur technique lors de la connexion.')
     }
   }
 }

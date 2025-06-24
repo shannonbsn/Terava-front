@@ -3,6 +3,8 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/userStore'
 import { useProfileStore } from '@/stores/profileStore'
+import axios from 'axios'
+import authApi from '@/services/authApi'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -21,6 +23,8 @@ const formData = reactive({
   research: '',
   username: '',
   email: '',
+  password: '',
+  password_confirmation: '',
   accept_policy: false
 })
 
@@ -41,10 +45,19 @@ function nextStep() {
 }
 
 async function submitForm() {
+
+  await authApi.get('/sanctum/csrf-cookie')
+  
+  if (!formData.password || formData.password !== formData.password_confirmation) {
+    alert("Mot de passe manquant ou confirmation incorrecte.");
+    return;
+  }
+
   const userPayload = {
     username: formData.username,
     email: formData.email,
     password: formData.password,
+    password_confirmation: formData.password_confirmation,
     accept_policy: formData.accept_policy
   }
 
@@ -59,7 +72,8 @@ async function submitForm() {
     user_id: userStore.user?.id || null
   }
 
-  const userSuccess = await userStore.register(userPayload)
+  const response = await authApi.post('/register', userPayload)
+  // const userSuccess = await userStore.register(userPayload)
 
   if (userSuccess && userStore.user?.id) {
     profilePayload.user_id = userStore.user.id
@@ -94,7 +108,7 @@ async function submitForm() {
           <var-input placeholder="Nom d'utilisateur" :rules="v => !!v || 'Le nom utilisateur est requis'" v-model="formData.username" />
             <var-input placeholder="Adresse email" type="email" :rules="v => !!v || 'email requis' "v-model="formData.email" />
             <var-input type="password" placeholder="Mot de passe" :rules="v => !!v || 'mot de passe requis' "v-model="formData.password"/>
-            <var-input type="password" placeholder="Confirmer le mot de passe" :rules="v => !!v || 'confirmation de mot de passe requis' " v-model="formData.confirmPassword"/>
+            <var-input type="password" placeholder="Confirmer le mot de passe" :rules="v => !!v || 'confirmation de mot de passe requis' " v-model="formData.password_confirmation"/>
             <var-checkbox v-model="formData.accept_policy">
               J'accepte la <a href="/privacy" target="_blank">politique de confidentialité</a>
             </var-checkbox>
