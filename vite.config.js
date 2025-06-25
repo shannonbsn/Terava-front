@@ -15,18 +15,18 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt'],
       manifest: {
-        name: 'Nom de ton app',
-        short_name: 'App',
-        description: 'Description de ton app',
+        name: 'Terava',
+        short_name: 'Terava',
+        description: 'Application de rencontre pour trouver un partenaire de voyage',
         theme_color: '#ffffff',
         icons: [
           {
-            src: 'icons/icon-192x192.png',
+            src: 'icons/icon.svg',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'icons/icon-512x512.png',
+            src: 'favicon.ico',
             sizes: '512x512',
             type: 'image/png'
           }

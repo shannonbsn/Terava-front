@@ -1,0 +1,1 @@
+{"name":"Terava","short_name":"Terava","description":"Application de rencontre pour trouver un partenaire de voyage","start_url":"/","display":"standalone","background_color":"#ffffff","theme_color":"#ffffff","lang":"en","scope":"/","icons":[{"src":"icons/icon.svg","sizes":"192x192","type":"image/png"},{"src":"favicon.ico","sizes":"512x512","type":"image/png"}]}
