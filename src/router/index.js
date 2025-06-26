@@ -9,7 +9,9 @@ import ResultView from '@/views/travel/ResultView.vue'
 import MatchingView from '@/views/MatchingView.vue'
 import SignUpForm from '@/components/login/SignUpForm.vue'
 // import SignUpView from '@/views/SignUpView.vue'
-import CurrentStatus from '@/components/onboarding/CurrentStatus.vue'
+// import CurrentStatus from '@/components/onboarding/CurrentStatus.vue'
+import MessageList from '@/components/messages/MessageList.vue'
+import ChatWindow from '@/components/messages/ChatWindow.vue.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,16 +59,24 @@ const router = createRouter({
     {
       path: '/signupmail',
       name: 'signupmail',
-      component: SignUpForm
+      component: SignUpForm,
+    },
+    {
+      path: '/messages',
+      name: 'messages',
+      component: MessageList,
+    },
+    {
+      path: '/messages/:username',
+      component: ChatWindow,
+      props: true,
     },
     {
       path: '/debug-api',
       name: 'debug-api',
-      component: () => import('@/views/DebugAPI.vue') // ou le bon chemin
-    }
+      component: () => import('@/views/DebugAPI.vue'),
+    },
   ],
 })
-
-
 
 export default router
